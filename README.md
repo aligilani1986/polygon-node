@@ -17,13 +17,13 @@ tar -xzvf bor-fullnode-snapshot-2022-10-26.tar.gz -C /data/polygon/bor/bor/chain
 tar -xzvf heimdall-snapshot-2022-10-31.tar.gz -C /data/polygon/heimdall/data/
 ```
 
-### Run rabbitmq, heimdaild and heimdail-rest-server:
+### First create a network on docker:
 ```
-### First create a network on docker
 docker network create -d bridge polygon
 ```
 
-
+### Run rabbitmq, heimdaild and heimdail-rest-server:
+```
 docker-compose -f heimdail.yml up -d
 ```
 
