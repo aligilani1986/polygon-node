@@ -6,7 +6,7 @@ services:
     image: gilani1364/bor:latest
 #    build: /data/polygon-node/bor
     volumes:
-        - /data/polygon/bor2:/root/.ethereum
+        - /data/polygon/bor:/root/.ethereum
     ports:
         - "8545:8545" # RPC
         - "8546:8546" # WS
