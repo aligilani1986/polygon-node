@@ -7,7 +7,7 @@ services:
     ports:
       - "5672:5672" # RabbitMQ
     restart: unless-stopped
-  
+
   heimdalld:
     container_name: heimdalld
     image: vlddm/heimdall:v0.2.1-mainnet
@@ -44,4 +44,7 @@ services:
       - --chain-id=137
       - --laddr=tcp://0.0.0.0:1317
       - --node=tcp://heimdalld:26657
-
+networks:
+  default:
+    name: polygon
+    external: true
