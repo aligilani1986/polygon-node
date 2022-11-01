@@ -11,12 +11,27 @@ Check for newer snapshots at [Polygon](https://snapshot.polygon.technology)
 ```
 curl -LOJ --retry 10 https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mainnet/bor-fullnode-snapshot-2022-10-26.tar.gz
 curl -LOJ --retry 10 https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mainnet/heimdall-snapshot-2022-10-31.tar.gz
+
 mkdir -p /data/polygon/bor/bor/chaindata/
 mkdir -p /data/polygon/heimdall/data/
+```
+### If you need to see the extraction progress 
+```
+sudo apt install pv
+
+pv bor-fullnode-snapshot-2022-10-26.tar.gz  | tar xz  -C /data/polygon/bor/bor/chaindata/
+pv heimdall-snapshot-2022-10-31.tar.gz  | tar xz -C /data/polygon/heimdall/data/
+```
+### Or you can use default tar command
+
+```
 tar -xzvf bor-fullnode-snapshot-2022-10-26.tar.gz -C /data/polygon/bor/bor/chaindata/
 tar -xzvf heimdall-snapshot-2022-10-31.tar.gz -C /data/polygon/heimdall/data/
 ```
-
+### Download genesis.json and put it in the data folder
+```
+wget https://raw.githubusercontent.com/maticnetwork/launch/master/mainnet-v1/without-sentry/bor/genesis.json -O /data/polygon/bor/genesis.json
+```
 ### First create a network on docker:
 ```
 docker network create -d bridge polygon
